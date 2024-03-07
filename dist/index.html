@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Women&#39;s day</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+<script>
+  var cusor='|';
+ var count=0;
+ var mess='Princess yêu thương ơi, <br />'+
+'ngày hôm nay là một dịp đặc biệt để anh thể hiện tình yêu và sự trân trọng đối với em. <br />'+
+'Chúc mừng Ngày Quốc tế Phụ nữ! Em là ngọn lửa sáng trong cuộc đời anh, nguồn cảm hứng và niềm vui không thể thiếu. <br />'+
+' Cảm ơn em đã luôn ở bên anh, đồng hành và chia sẻ mọi khó khăn và niềm vui. '+
+' <br>Anh xin hứa sẽ luôn yêu thương, tôn trọng và ủng hộ em trên hành trình chung của chúng ta <br /> '+
+' Chúc em luôn được hạnh phúc, thành công và biết mình quý giá như một người phụ nữ tuyệt vời <br />'+
+' Hãy mãi là ánh sáng rực rỡ trong cuộc đời anh. <br />'+
+' Anh yêu Em nhiều &hearts; <br />'+
+' Hà Nội, ngày 07  tháng 03 năm 2024 <br/ >'
+  function type()
+{
+	if (cusor=='|') cusor=' '; else cusor='|';
+	document.getElementById('scr').innerHTML=mess.substring(0,count++)+cusor;
+	if(count<=mess.length) setTimeout("type()",80);
+}
+function animateHeart() {
+  TweenMax.from($("#heart"), 1, {
+    scaleX: 1.2, 
+    scaleY: 1.2,
+    transformOrigin: "50% 50%",
+    ease: Elastic.easeOut.config(1, 0.3)
+  });
+  TweenMax.to($("#heart"), 1, {
+    scaleX: 1, 
+    scaleY: 1,
+    ease: Elastic.easeOut.config(1, 0.3),
+    onComplete: function() {
+      setTimeout(animateHeart, 200);
+      parent.$('#mess').css('display','');
+    }
+  });
+}
+
+new Vivus('message', {type: "oneByOne", duration: 1200}, function() {
+  TweenMax.to($("path"), 5, {fillOpacity: 1, onComplete: function() {
+    animateHeart();
+
+  }});
+});
+
+$(function() {
+  TweenMax.to("body", 20, {backgroundPositionY: -100, repeat: -1, ease: Power0.easeNone});
+  //$('#test').css('display','none');
+})
+
+</script>
+<style>
+path {
+  stroke: #ff0000;
+  stroke-width: 2;
+  stroke-dasharray: 10000;
+  stroke-dashoffset: 10000;
+  fill-opacity: 0;
+}
+
+body {
+  background: url(https://pixabay.com/static/uploads/photo/2015/02/21/09/57/heart-644091_960_720.png);
+}
+</style>
+</head>
+
+<body style="display: flex;" onload="type()">
+  <div style="width:100%">
+    <div style="
+    color: white;
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    text-shadow: 0 0 8px rgb(225 12 168), 0 0 10px rgb(225 12 168), 0 0 10px rgb(225 12 168);
+    width: 100%;" id="scr"></div>
+<div class="center-text",
+style="
+width: 100%;
+color: rgb(255 255 255);
+height: 100%;
+font-size: 31px;
+font-style: italic;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-bottom: 50px;
+text-shadow: 0 0 10px rgb(225 12 168), 0 0 10px rgb(225 12 168), 0 0 10px rgb(225 12 168);
+text-align: center;">Viết Mạnh &hearts;  Trang Huyền</div>  
+  
+  </div>
+             
+      
+     
+
+</body>
+</html>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js'></script>
+<script src='https://cdn.jsdelivr.net/vivus/latest/vivus.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
